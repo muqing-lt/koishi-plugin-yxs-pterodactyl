@@ -1,4 +1,4 @@
-# 🦕 @yuanxueshi/koishi-plugin-yxs-pterodactyl
+# 🦕koishi-plugin-yxs-pterodactyl
 
 [![npm version](https://img.shields.io/npm/v/@yuanxueshi/koishi-plugin-yxs-pterodactyl?style=flat-square)](https://www.npmjs.com/package/@yuanxueshi/koishi-plugin-yxs-pterodactyl)
 [![npm downloads](https://img.shields.io/npm/dm/@yuanxueshi/koishi-plugin-yxs-pterodactyl?style=flat-square)](https://www.npmjs.com/package/@yuanxueshi/koishi-plugin-yxs-pterodactyl)
