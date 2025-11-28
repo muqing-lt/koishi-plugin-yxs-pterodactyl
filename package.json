@@ -1,0 +1,142 @@
+{
+  "name": "@yuanxueshi/koishi-plugin-yxs-pterodactyl",
+  "version": "1.4.9",
+  "description": "对接翼龙面板 (Pterodactyl Panel) 的 Koishi 插件，支持 QQ 群内实时监控服务器状态、资源使用及启停管理（指令前缀 yxs）",
+  "main": "lib/pterodactyl.js",
+  "types": "lib/pterodactyl.d.ts",
+  "keywords": [
+    "koishi",
+    "plugin",
+    "pterodactyl",
+    "翼龙面板",
+    "服务器管理",
+    "QQ机器人",
+    "实时监控",
+    "WebSocket"
+  ],
+  "author": "yuanxueshi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl.git"
+  },
+  "homepage": "https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl",
+  "bugs": {
+    "url": "https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl/issues"
+  },
+  "peerDependencies": {
+    "koishi": "^4.17.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "ws": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^20.9.0",
+    "@types/ws": "^8.5.10",
+    "koishi": "^4.17.0",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "pub": "npm publish --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "koishi": {
+    "description": {
+      "en": "A Koishi plugin for Pterodactyl Panel, supporting real-time server status monitoring, resource usage check and power management via QQ groups (command prefix: yxs)",
+      "zh": "对接翼龙面板的 Koishi 插件，支持 QQ 群内实时监控服务器状态、查看资源使用及启停管理（指令前缀：yxs）"
+    },
+    "service": {
+      "required": [],
+      "optional": []
+    },
+    "configSchema": {
+      "type": "object",
+      "title": "翼龙面板 Client API 配置",
+      "description": "对接翼龙面板 Client API 的核心配置，用户需通过 /yxs.bind 绑定个人 Client Token 后使用",
+      "required": ["panelUrl"],
+      "properties": {
+        "panelUrl": {
+          "type": "string",
+          "title": "面板基础 URL",
+          "description": "翼龙面板的访问地址（例如：https://i91.mczbc.cn，无需加 /api 后缀）",
+          "format": "uri",
+          "default": "https://i91.mczbc.cn"
+        },
+        "allowedGroups": {
+          "type": "array",
+          "title": "允许使用的群聊",
+          "description": "仅指定群聊可使用插件指令，留空则所有群聊均可使用",
+          "items": {
+            "type": "string",
+            "title": "群号",
+            "pattern": "^\\d+$"
+          },
+          "default": [],
+          "uniqueItems": true
+        },
+        "commands": {
+          "type": "object",
+          "title": "指令自定义",
+          "description": "修改插件默认指令触发词（避免与其他插件冲突）",
+          "properties": {
+            "bind": {
+              "type": "string",
+              "title": "绑定账号指令",
+              "default": "yxs.bind",
+              "pattern": "^[^\\s]+$"
+            },
+            "unbind": {
+              "type": "string",
+              "title": "解绑账号指令",
+              "default": "yxs.unbind",
+              "pattern": "^[^\\s]+$"
+            },
+            "start": {
+              "type": "string",
+              "title": "启动服务器指令",
+              "default": "yxs.start",
+              "pattern": "^[^\\s]+$"
+            },
+            "stop": {
+              "type": "string",
+              "title": "停止服务器指令",
+              "default": "yxs.stop",
+              "pattern": "^[^\\s]+$"
+            },
+            "restart": {
+              "type": "string",
+              "title": "重启服务器指令",
+              "default": "yxs.restart",
+              "pattern": "^[^\\s]+$"
+            },
+            "kill": {
+              "type": "string",
+              "title": "强制终止指令",
+              "default": "yxs.kill",
+              "pattern": "^[^\\s]+$"
+            },
+            "status": {
+              "type": "string",
+              "title": "查看状态指令",
+              "default": "yxs.status",
+              "pattern": "^[^\\s]+$"
+            }
+          },
+          "default": {
+            "bind": "yxs.bind",
+            "unbind": "yxs.unbind",
+            "start": "yxs.start",
+            "stop": "yxs.stop",
+            "restart": "yxs.restart",
+            "kill": "yxs.kill",
+            "status": "yxs.status"
+          }
+        }
+      }
+    }
+  }
+}
