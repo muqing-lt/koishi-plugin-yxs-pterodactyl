@@ -260,6 +260,6 @@ yarn test
 - 稳定版本：1.4.9（已修复已知所有核心问题）
 - 仓库地址：[https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl](https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl)
 - 问题反馈：请在 [GitHub Issues](https://github.com/muqing-lt/koishi-plugin-yxs-pterodactyl/issues) 提交（附错误日志和操作步骤）
-- 作者：yuanxueshi
+- 作者：yuanxueshi [QQ:1614578909]
 
 如果觉得这个插件对你有帮助，欢迎给个 Star ⭐ 支持一下！
